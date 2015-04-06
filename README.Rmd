@@ -17,8 +17,8 @@ knitr::knit_hooks$set(output = function(x, options) {
        x <- c(head(x, lines), more)
      }
    } else {
-     x <- c(if (abs(lines[1]) > 1) more else NULL, 
-            x[lines], 
+     x <- c(if (abs(lines[1]) > 1) more else NULL,
+            x[lines],
             if (length(x) > lines[abs(length(lines))]) more else NULL
            )
    }
@@ -34,8 +34,6 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 ```
-
-`resteasy` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?resteasy-defunct`.
 
 ## Installation
 

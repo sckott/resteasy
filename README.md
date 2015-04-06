@@ -2,9 +2,6 @@ resteasy
 ========
 
 
-
-`resteasy` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?resteasy-defunct`.
-
 ## Installation
 
 
