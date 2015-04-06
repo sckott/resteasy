@@ -26,7 +26,7 @@ Create a file
 \dontrun{
 options(github_name = "Scott Chamberlain")
 options(github_email = "myrmecocystus@gmail.com")
-rest_PUT(x=iris, repo = "ropensci/datasets", path ="iris.csv",
+easy_create(x=iris, repo = "sckott/testeasy", path ="iris.csv",
    message = "hello world")
 }
 }

@@ -1,0 +1,91 @@
+resteasy
+========
+
+```{r echo=FALSE}
+library("knitr")
+hook_output <- knitr::knit_hooks$get("output")
+knitr::knit_hooks$set(output = function(x, options) {
+   lines <- options$output.lines
+   if (is.null(lines)) {
+     return(hook_output(x, options))  # pass to default hook
+   }
+   x <- unlist(strsplit(x, "\n"))
+   more <- "..."
+   if (length(lines) == 1) {        # first n lines
+     if (length(x) > lines) {
+       # truncate the output, but add ....
+       x <- c(head(x, lines), more)
+     }
+   } else {
+     x <- c(if (abs(lines[1]) > 1) more else NULL, 
+            x[lines], 
+            if (length(x) > lines[abs(length(lines))]) more else NULL
+           )
+   }
+   # paste these lines together
+   x <- paste(c(x, ""), collapse = "\n")
+   hook_output(x, options)
+ })
+
+knitr::opts_chunk$set(
+  comment = "#>",
+  collapse = TRUE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+`resteasy` gives you access to data from [GBIF](http://www.gbif.org/) via their REST API. GBIF versions their API - we are currently using `v1` of their API. You can no longer use their old API in this package - see `?resteasy-defunct`.
+
+## Installation
+
+```{r eval=FALSE}
+install.packages("devtools")
+devtools::install_github("sckott/resteasy")
+```
+
+```{r}
+library("resteasy")
+```
+
+## GET a README file
+
+```{r}
+easy_readme("sckott/testeasy")
+```
+
+## GET a csv file as a data.frame
+
+Get the whole file
+
+```{r}
+easy_get("ropensci/datasets", "mammals/mammals.csv")
+```
+
+Filter by a column, `Family = "Coryphodontidae"`
+
+```{r}
+easy_get("ropensci/datasets", "mammals/mammals.csv", Family = "Coryphodontidae")
+```
+
+Filter by a column, `Last_appearance_mya = 50`
+
+```{r}
+easy_get("ropensci/datasets", "mammals/mammals.csv", Last_appearance_mya = 50)
+```
+
+## Create a file
+
+```{r output.lines = 1:10}
+options(github_name = "Scott Chamberlain")
+options(github_email = "myrmecocystus@gmail.com")
+easy_create(iris, repo = "sckott/testeasy", path = "iris.csv", message = "hello world")
+```
+
+## Update a file
+
+...
+
+## Delete a file
+
+...
