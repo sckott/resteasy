@@ -2,14 +2,14 @@ Package: resteasy
 Title: REST API from Static Files Hosted on GitHub
 Description: REST API from Static Files Hosted on GitHub.
 Version: 0.0.1.99
-Date: 2015-04-03
+Date: 2015-04-06
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com"),
     person("Carl", "Boettiger", role = "aut",
     email = "cboettig@gmail.com"))
-URL: https://github.com/ropensci/resteasy
-BugReports: https://github.com/ropensci/resteasy/issues
+URL: https://github.com/sckott/resteasy
+BugReports: https://github.com/sckott/resteasy/issues
 VignetteBuilder: knitr
 Imports:
     httr,
