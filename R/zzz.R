@@ -50,4 +50,7 @@ parse_git_repo <- function(path) {
   params
 }
 
+github_pull <- function(pull) structure(pull, class = "github_pull")
+github_release <- function() structure(NA_integer_, class = "github_release")
+
 c2api_url <- function() "http://labs.data.gov/csv-to-api"

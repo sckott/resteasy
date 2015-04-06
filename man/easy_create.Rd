@@ -7,6 +7,8 @@
 easy_create(x, repo, path, message, branch = "master", ...)
 }
 \arguments{
+\item{x}{A data.frame}
+
 \item{repo}{(character) Repository name. Required.}
 
 \item{path}{(character) Path to file from root of repo. Required.}

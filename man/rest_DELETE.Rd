@@ -11,6 +11,10 @@ rest_DELETE(repo, path, message, sha = NULL, branch = "master", ...)
 
 \item{path}{(character) Path to file from root of repo}
 
+\item{message}{(character) Commmit message}
+
+\item{sha}{(character) The blob SHA of the file being replaced.}
+
 \item{branch}{(character) Git branch. Default: master}
 
 \item{...}{Further args to \code{\link[httr]{DELETE}}}

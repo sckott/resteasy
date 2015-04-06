@@ -13,6 +13,7 @@ BugReports: https://github.com/ropensci/resteasy/issues
 VignetteBuilder: knitr
 Imports:
     httr,
+    base64enc,
     jsonlite,
     dplyr
 Suggests:

@@ -25,6 +25,8 @@ rest_GET(repo="ropensci/datasets", path="mammals/mammals.csv")
 rest_GET(repo="datasets/global-temp", path="data/annual.csv")
 rest_GET("datasets/gold-prices", "data/data.csv")
 rest_GET("datasets/gdp", "data/gdp.csv")
+
+rest_GET(repo = "sckott/testeasy", path = "mtcars.csv")
 }
 }
 

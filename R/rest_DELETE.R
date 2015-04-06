@@ -3,6 +3,8 @@
 #' @export
 #' @param repo (character) Repository name
 #' @param path (character) Path to file from root of repo
+#' @param message (character) Commmit message
+#' @param sha (character) The blob SHA of the file being replaced.
 #' @param branch (character) Git branch. Default: master
 #' @param ... Further args to \code{\link[httr]{DELETE}}
 #' @examples \dontrun{

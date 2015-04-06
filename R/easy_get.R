@@ -1,6 +1,6 @@
 #' Get a file with query parameters
 #'
-#' @importFrom dplyr rbind_all as_data_frame
+#' @importFrom dplyr rbind_all as_data_frame tbl_df
 #' @export
 #' @param repo (character) Repository name
 #' @param path (character) Path to file from root of repo
@@ -24,7 +24,7 @@ easy_get <- function(repo, path, branch = "master", curlopts = list(), ...) {
   dat <- make_url(pars$username, pars$repo, branch, path)
   args <- ct(list(source = dat, ...))
   if (all(names(args) == "source")) {
-    tmp <- get_content(repo, path, branch, curlopts, ...)
+    tmp <- rest_GET(repo, path, branch, curlopts, ...)
   } else {
     req <- httr::GET(c2api_url(), query = args, curlopts)
     tmp <- jsonlite::fromJSON(process(req))

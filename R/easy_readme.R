@@ -12,12 +12,11 @@ easy_readme <- function(repo, branch = "master", ...) {
   args <- ct(list(ref = branch))
   req <- httr::GET(sprintf("https://api.github.com/repos/%s/%s/readme", pars$username, pars$repo),
                     query = args, basic_auth(), ghead(), ...)
-  structure(list(read_readme(content(req)$content)), class = "readme")
+  structure(list(read_readme(httr::content(req)$content)), class = "readme")
 }
 
 read_readme <- function(x) {
-  paste(vapply(strsplit(x, "\n")[[1]], RCurl::base64Decode,
-               character(1), USE.NAMES = FALSE), collapse = " ")
+  rawToChar(base64enc::base64decode(x))
 }
 
 #' @export

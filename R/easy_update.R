@@ -1,6 +1,7 @@
 #' Update a file
 #'
 #' @export
+#' @param x A data.frame
 #' @param repo (character) Repository name. Required.
 #' @param path (character) Path to file from root of repo. Required.
 #' @param message (character) Commmit message. Required.

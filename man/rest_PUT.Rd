@@ -7,6 +7,8 @@
 rest_PUT(x, repo, path, message, branch = "master", sha = NULL, ...)
 }
 \arguments{
+\item{x}{A data.frame}
+
 \item{repo}{(character) Repository name}
 
 \item{path}{(character) Path to file from root of repo}
@@ -26,8 +28,16 @@ Create a file
 \dontrun{
 options(github_name = "Scott Chamberlain")
 options(github_email = "myrmecocystus@gmail.com")
-rest_PUT(x=mtcars, repo = "ropensci/datasets", path ="mtcars.csv",
-   message = "hello world")
+
+# From a data.frame
+row.names(mtcars) <- NULL
+rest_PUT(mtcars, repo = "sckott/testeasy", path = "mtcars.csv",
+   message = "putting up mtcars, from a data.frame")
+
+# From a file
+write.csv(mtcars, file="~/mtcars.csv")
+rest_PUT("~/mtcars.csv", repo = "sckott/testeasy", path = "mtcars.csv",
+   message = "putting up mtcars, from a file")
 }
 }
 

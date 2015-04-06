@@ -1,5 +1,6 @@
 #' Get a file
 #'
+#' @import httr
 #' @export
 #' @param repo (character) Repository name
 #' @param path (character) Path to file from root of repo
@@ -11,6 +12,8 @@
 #' rest_GET(repo="datasets/global-temp", path="data/annual.csv")
 #' rest_GET("datasets/gold-prices", "data/data.csv")
 #' rest_GET("datasets/gdp", "data/gdp.csv")
+#'
+#' rest_GET(repo = "sckott/testeasy", path = "mtcars.csv")
 #' }
 rest_GET <- function(repo, path, branch = "master", ...) {
   pars <- parse_git_repo(repo)
@@ -22,12 +25,7 @@ rest_GET <- function(repo, path, branch = "master", ...) {
 }
 
 read_file <- function(x) {
-  tmp <- gsub("\n\\s+", "\n", paste(vapply(strsplit(x, "\n")[[1]], RCurl::base64Decode,
-                                           character(1), USE.NAMES = FALSE), collapse = " "))
-  lines <- readLines(textConnection(tmp))
-  lines2 <- vapply(lines, gsub, character(1), pattern = "\\s", replacement = "",
-                   USE.NAMES = FALSE)
-  read.csv(text = lines2)
+  read.csv(text = rawToChar(base64enc::base64decode(x)))
 }
 
 ghead <- function() add_headers(`Accept` = "application/vnd.github.v3+json")
